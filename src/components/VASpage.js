@@ -9,7 +9,7 @@ const publicKey = 'PK_B596C09B6F08421F055A20250125080238';
 // toast.configure();
 
 const api = axios.create({
-    baseURL: 'https://api.dev.gateway.zestpayment.com/vas/api/v1',
+    baseURL: 'https://api.gateway.zestpayment.com/vas/api/v1',
     headers: {
     Authorization: `Bearer ${publicKey}`
     }

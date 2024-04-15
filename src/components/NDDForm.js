@@ -12,7 +12,7 @@ const NDDForm = () => {
         e.preventDefault();
 
         // First, create the customer profile
-        fetch('https://api.dev.gateway.zestpayment.com/payment-engine/api/v1/web-engine/process/customer-request', {
+        fetch('https://api.gateway.zestpayment.com/payment-engine/api/v1/web-engine/process/customer-request', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const NDDForm = () => {
             toast.success('Profile created successfully');
 
             // Then, create the mandate
-            fetch('https://api.dev.gateway.zestpayment.com/payment-engine/api/v1/web-engine/process/ndd-request', {
+            fetch('https://api.gateway.zestpayment.com/payment-engine/api/v1/web-engine/process/ndd-request', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
