@@ -48,14 +48,15 @@ const VASpage = () => {
     const handlePayment = async () => {
         try {
             const payload = {
-                billerId: 'SMILE',
+                billerId: 'MTN-DATA',
                 customerId: '1402000567',
                 requestId: '412131',
                 // customerName: 'Olumide Pablo',
-                customerName: 'Sabelo Dlangamandla SABZA',
+                // customerName: 'Sabelo Dlangamandla SABZA',
+                customerName: 'Sunday Ojo',
                 customerAddress: 'isolo',
-                bouquetCode: 'SMILE500MB',
-                amount: '1800'
+                bouquetCode: 'MTN100MB1Day100',
+                amount: '100'
             }
         const response = await api.post(`biller/payment/internet`, payload);
         console.log('Payment response', response.data);
