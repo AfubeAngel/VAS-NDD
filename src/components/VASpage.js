@@ -31,42 +31,38 @@ const VASpage = () => {
     const validateInternetSubscription = async () => {
         try {
             const payload = {
-                billerId: 'SMILE',
-                customerId: '1402000567',
-                requestId: '123'
+                "customerId": "07062174036",
+                "requestId": 12300
             };
-        const response = await api.post(`biller/validate/internet`, payload);
+        const response = await api.post(`biller/validate/vtu`, payload);
         console.log('Validation response:', response.data);
-        toast.success('Successfully validated Internet subscription');
+        toast.success('Successfully validated vtu subscription');
         handlePayment();
         } catch (error) {
-        console.error('Error validating Internet subscription:', error);
-        toast.error('Error validating Internet subscription');
+        console.error('Error validating vtu subscription:', error);
+        toast.error('Error validating vtu subscription');
         }
     };
 
     const handlePayment = async () => {
         try {
             const payload = {
-                billerId: 'MTN-DATA',
-                customerId: '1402000567',
+                billerId: 'MTN-AIRTIME',
+                customerId: '07062174036',
                 requestId: '412131',
-                // customerName: 'Olumide Pablo',
                 // customerName: 'Sabelo Dlangamandla SABZA',
-                customerName: 'Sunday Ojo',
-                customerAddress: 'isolo',
-                bouquetCode: 'MTN100MB1Day100',
+                // customerAddress: 'isolo',
                 amount: '100'
             }
-        const response = await api.post(`biller/payment/internet`, payload);
+        const response = await api.post(`biller/payment/vtu`, payload);
         console.log('Payment response', response.data);
-        toast.success('Successfully made internet payment');
+        toast.success('Successfully made vtu payment');
         } catch (error) {
-            console.error('Error making internet payment:', error);
+            console.error('Error making vtu payment:', error);
             if (error.response && error.response.data && error.response.data.message === "insufficient wallet balance") {
                 toast.error('Insufficient wallet balance');
             } else {
-                toast.error('Error making internet payment');
+                toast.error('Error making vtu payment');
             }
         }
     };

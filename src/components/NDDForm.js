@@ -16,7 +16,8 @@ const NDDForm = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Api-Public-Key': 'PK_ABLKBJNOHKZ-1368654ICA8MNVM4PLHT14' 
+                // 'Api-Public-Key': 'PK_ABLKBJNOHKZ-1368654ICA8MNVM4PLHT14' 
+                'API-Public-Key': 'PK_6AABAC98F020DD61E8EB20250415125102'
             },
             body: JSON.stringify({
                 nddRequestType: "CREATE_CUSTOMER",
@@ -38,7 +39,7 @@ const NDDForm = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Api-Public-Key': 'PK_ABLKBJNOHKZ-1368654ICA8MNVM4PLHT14'
+                    'Api-Public-Key': 'PK_6AABAC98F020DD61E8EB20250415125102'
                 },
                 body: JSON.stringify({
                     nddRequestType: "CREATE_MANDATE",
