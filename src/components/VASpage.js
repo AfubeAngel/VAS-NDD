@@ -128,7 +128,7 @@ const VASpage = () => {
                 "billerId": "IBEDCA",
                 "customerId": "62420187593",
                 "requestId": "7996909",
-                "amount": 300,
+                "amount": 1000,
                 "customerName": "MR LANRE BENSON",
                 "customerAddress": "I, 10, SPARKLIGHT ESTATEIBAFO OGUN"
             }
@@ -137,6 +137,48 @@ const VASpage = () => {
         toast.success('Successfully made disco payment');
         } catch (error) {
             console.error('Error making disco payment:', error);
+            if (error.response && error.response.data && error.response.data.message === "insufficient wallet balance") {
+                toast.error('Insufficient wallet balance');
+            } else {
+                toast.error(error.response.data.data.message);
+            }
+        }
+    };
+
+    const validateTVStartimes = async () => {
+        try {
+            const payload = 
+            {
+                "billerId": "STARTIMES",
+                "customerId": 7030935900,
+                "requestId": 4444
+            };
+        const response = await api.post(`/biller/validate/tv`, payload);
+        console.log('Validation response:', response.data);
+        toast.success('Successfully validated startimes payment');
+        handleTVStartimes();
+        } catch (error) {
+        console.error('Error validating startimes payment:', error);
+        toast.error('Error validating startimes payment');
+        }
+    };
+
+    const handleTVStartimes = async () => {
+        try {
+            const payload =
+            {
+                "billerId" : "STARTIMES",
+                "customerId": "2322",
+                "requestId": 1214,
+                "customerName": "Gabriel",
+                "amount": 5000
+            }
+            
+        const response = await api.post(`/biller/payment/tv`, payload);
+        console.log('Payment response', response.data);
+        toast.success('Successfully made startimes payment');
+        } catch (error) {
+            console.error('Error making startimes payment:', error);
             if (error.response && error.response.data && error.response.data.message === "insufficient wallet balance") {
                 toast.error('Insufficient wallet balance');
             } else {
@@ -156,7 +198,8 @@ return (
     <button className='vasbtn' style={{marginRight:"10px"}} onClick={handleGetMyBillers}>Get My Billers</button>
     <button className='vasbtn' style={{marginRight:"10px"}} onClick={validateArtimePayment}>Purchase airtime</button>
     <button className='vasbtn' style={{marginRight:"10px"}} onClick={validateInternetSubscription}>Purchase Data</button>
-    <button className='vasbtn' onClick={validateDiscoPayment}>Pay Disco bill</button>
+    <button className='vasbtn' style={{marginRight:"10px"}} onClick={validateDiscoPayment}>Pay Disco bill</button>
+    <button className='vasbtn' style={{marginRight:"10px"}} onClick={validateTVStartimes}>Pay for Startimes</button>
     </div>
     </div>
 );
